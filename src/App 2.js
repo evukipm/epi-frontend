@@ -3,12 +3,11 @@ import { Route, Switch } from 'react-router-dom'
 
 import PrivateRoute from './components/PrivateRoute'
 import Navbar from './components/Navbar';
-//import Private from './pages/Private';
+import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 
 import AuthContext from './lib/authContext';
-import Createpost from './pages/Createpost';
 class App extends Component {
   render() {
     return (
@@ -20,7 +19,7 @@ class App extends Component {
             <Switch>
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />              
-              <PrivateRoute path="/newpost" component={Createpost} />
+              <PrivateRoute path="/private" component={Private} />
             </Switch>
           </div>
         </div>
