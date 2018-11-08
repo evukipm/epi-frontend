@@ -29,7 +29,7 @@ class Form extends Component {
     const { value, isNotemptyValue } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" value={value} onChange={this.handleChangeInput}/>
+        <input type="text" value={value} onChange={this.handleChangeInput} required/>
         {isNotemptyValue ? <input type="submit" value="Add step"/> : null }
       </form>
     )

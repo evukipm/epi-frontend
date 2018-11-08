@@ -6,7 +6,6 @@ import post from '../lib/post-service';
 class Createpost extends Component {
   state = {
     numberOfSteps: [],
-    isNumberOfStepsEmpty: true,
     isTitleEmpty: true,
     isDescriptionEmpty: true,
     title: '',
@@ -18,35 +17,44 @@ class Createpost extends Component {
     numberOfSteps.push({step: value})
     this.setState({
       numberOfSteps: numberOfSteps,
-      isNumberOfStepsEmpty: false,
     })
   }
 
   allIsNotEmpty(){
-    const { isNumberOfStepsEmpty, isTitleEmpty, isDescriptionEmpty } = this.state;
-    if (!isNumberOfStepsEmpty && !isTitleEmpty && !isDescriptionEmpty){
+    const { isTitleEmpty, isDescriptionEmpty, numberOfSteps } = this.state;
+    if (!isTitleEmpty && !isDescriptionEmpty && numberOfSteps.length > 0){
      return true;
     }
     return false;
   }
 
   handleCreatePost(){
-    const { title, text, numberOfSteps} = this.state;
+    const { title, text, numberOfSteps } = this.state;
     post.createPost({ title, text, numberOfSteps })
     .then( (post) => {
+      //TODO
+      
     })
     .catch( error => {console.log(error) })
   }
 
-  
-
   handleChange = (event) => {  
     const {name, value} = event.target
-    this.setState({[name]: value});
+    console.log(name)
+    if(name === 'title'){
+      this.setState({
+        [name]: value,
+        isTitleEmpty: false,
+
+      });
+    } else if (name === 'text'){
+      this.setState({
+        [name]: value,
+        isDescriptionEmpty: false,
+      });
+    }
     console.log(this.state.title, this.state.text)
   }
-  
-
 
   render() {
     const { numberOfSteps } = this.state;  
@@ -55,7 +63,7 @@ class Createpost extends Component {
     return (
       <div>
         <label>Title:</label>
-        <input name="title "onChange={this.handleChange}></input>
+        <input name="title"onChange={this.handleChange}></input>
         <label>Description:</label>
         <textarea name="text" onChange={this.handleChange}></textarea>
         <p>Define your steps:</p>
