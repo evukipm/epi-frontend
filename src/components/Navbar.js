@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../lib/authContext';
 class Navbar extends Component {
   render() {  
-    const { isLogged } = this.props;
+    const { isLogged, user, logout } = this.props;
     return (
       <div>
         {isLogged ? <div>
-          <p>username: {this.props.user.username}</p>
-          <p onClick={this.props.logout}>Logout</p>
+          <p>username: {user.username}</p>
+          <p onClick={logout}>Logout</p>
+          <Link to={`/profile/${user._id}`}>Go to mi profile</Link>
         </div> : <div>
           <Link to='/login'>Login</Link>
           <Link to='/signup'>Signup</Link>
