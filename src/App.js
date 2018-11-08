@@ -20,7 +20,7 @@ class App extends Component {
             <Switch>
               {/*<Route exact path="/" component={Mainpage} /> */}
               <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />              
+              <Route path="/login" component={Login} />
               <PrivateRoute path="/newpost" component={Createpost} />
               <PrivateRoute path={`/profile/${user._id}`} component={Profile} />
             </Switch>
