@@ -28,12 +28,11 @@ class Createpost extends Component {
     return false;
   }
 
-  handleCreatePost(){
+  handleCreatePost = () => {
     const { title, text, numberOfSteps } = this.state;
     post.createPost({ title, text, numberOfSteps })
     .then( (post) => {
-      //TODO
-      
+
     })
     .catch( error => {console.log(error) })
   }
@@ -45,7 +44,6 @@ class Createpost extends Component {
       this.setState({
         [name]: value,
         isTitleEmpty: false,
-
       });
     } else if (name === 'text'){
       this.setState({
