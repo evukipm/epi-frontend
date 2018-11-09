@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withAuth } from '../lib/authContext';
+import { Redirect } from 'react-router-dom';
 import Form from '../components/Form';
 import post from '../lib/post-service';
 
@@ -10,6 +11,7 @@ class Createpost extends Component {
     isDescriptionEmpty: true,
     title: '',
     text: '',
+    isPostCreated: false,
   }
 
   handleSubmit = (value) => {
@@ -31,8 +33,10 @@ class Createpost extends Component {
   handleCreatePost = () => {
     const { title, text, numberOfSteps } = this.state;
     post.createPost({ title, text, numberOfSteps })
-    .then( (post) => {
-
+    .then( () => {
+      this.setState({
+        isPostCreated: true,
+      })
     })
     .catch( error => {console.log(error) })
   }
@@ -54,13 +58,8 @@ class Createpost extends Component {
     console.log(this.state.title, this.state.text)
   }
 
-  render() {
-    const { numberOfSteps } = this.state;  
-    let isAllNonEmpty = false;
-    isAllNonEmpty = this.allIsNotEmpty();
-    return (
-      <div>
-        <label>Title:</label>
+  renderForm(){
+        <label>Title:</label> 
         <input name="title"onChange={this.handleChange}></input>
         <label>Description:</label>
         <textarea name="text" onChange={this.handleChange}></textarea>
@@ -74,7 +73,16 @@ class Createpost extends Component {
           })}
         </ul>
         <Form onSubmit={this.handleSubmit}/>
-        {isAllNonEmpty ? <button onClick={this.handleCreatePost}>Create Post</button> : null }
+        { isAllNonEmpty ? <button onClick={this.handleCreatePost}>Create Post</button> : null }
+  }
+
+  render() {
+    const { numberOfSteps } = this.state;  
+    let isAllNonEmpty = false;
+    isAllNonEmpty = this.allIsNotEmpty();
+    return (
+      <div>
+        { isPostCreated ?  renderForm(): <Redirect to="/"/>}
       </div>
     )
   }
