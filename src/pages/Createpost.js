@@ -5,7 +5,7 @@ import post from '../lib/post-service';
 
 class Createpost extends Component {
   state = {
-    numberOfSteps: [],
+    steps: [],
     isTitleEmpty: true,
     isDescriptionEmpty: true,
     title: '',
@@ -13,24 +13,24 @@ class Createpost extends Component {
   }
 
   handleSubmit = (value) => {
-    const { numberOfSteps } = this.state;
-    numberOfSteps.push({step: value})
+    const { steps } = this.state;
+    steps.push({step: value})
     this.setState({
-      numberOfSteps: numberOfSteps,
+      steps: steps,
     })
   }
 
   allIsNotEmpty(){
-    const { isTitleEmpty, isDescriptionEmpty, numberOfSteps } = this.state;
-    if (!isTitleEmpty && !isDescriptionEmpty && numberOfSteps.length > 0){
+    const { isTitleEmpty, isDescriptionEmpty, steps } = this.state;
+    if (!isTitleEmpty && !isDescriptionEmpty && steps.length > 0){
      return true;
     }
     return false;
   }
 
   handleCreatePost = () => {
-    const { title, text, numberOfSteps } = this.state;
-    post.createPost({ title, text, numberOfSteps })
+    const { title, text, steps } = this.state;
+    post.createPost({ title, text, steps })
     .then( (post) => {
 
     })
@@ -55,7 +55,7 @@ class Createpost extends Component {
   }
 
   render() {
-    const { numberOfSteps } = this.state;  
+    const { steps } = this.state;  
     let isAllNonEmpty = false;
     isAllNonEmpty = this.allIsNotEmpty();
     return (
@@ -66,7 +66,7 @@ class Createpost extends Component {
         <textarea name="text" onChange={this.handleChange}></textarea>
         <p>Define your steps:</p>
         <ul>
-          { numberOfSteps.map( (step, key) => {
+          { steps.map( (step, key) => {
             console.log(step)
             return <li key={key}>
               {step.step}
