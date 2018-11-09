@@ -5,7 +5,7 @@ import Container from '../components/Container';
 export default class Homepage extends Component {
 
   state = {
-    posts: [
+    data: [
     //{
     //   title: "Hola_mundo",
     //   text: "Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo",
@@ -35,6 +35,7 @@ export default class Homepage extends Component {
     })
     post.getPost()
     .then((result)=>{
+      console.log(result)
       this.setState({
         data: result,
         isLoading: false,
@@ -46,11 +47,10 @@ export default class Homepage extends Component {
   }
 
   render() {
-    const {posts} = this.state;
-    
+    const {data} = this.state;
     return (
       <div>
-        {posts.map( (post, index) => {
+        {data.map( (post, index) => {
           return <Container 
             data = {post}
             key = {index}

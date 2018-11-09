@@ -6,7 +6,7 @@ import post from '../lib/post-service';
 
 class Createpost extends Component {
   state = {
-    numberOfSteps: [],
+    steps: [],
     isTitleEmpty: true,
     isDescriptionEmpty: true,
     title: '',
@@ -15,16 +15,17 @@ class Createpost extends Component {
   }
 
   handleSubmit = (value) => {
-    const { numberOfSteps } = this.state;
-    numberOfSteps.push({step: value})
+    const { steps } = this.state;
+    steps.push({step: value})
+    console.log(value)
     this.setState({
-      numberOfSteps: numberOfSteps,
+      steps: steps,
     })
   }
 
   allIsNotEmpty(){
-    const { isTitleEmpty, isDescriptionEmpty, numberOfSteps } = this.state;
-    if (!isTitleEmpty && !isDescriptionEmpty && numberOfSteps.length > 0){
+    const { isTitleEmpty, isDescriptionEmpty, steps } = this.state;
+    if (!isTitleEmpty && !isDescriptionEmpty && steps.length > 0){
      return true;
     }
     return false;
@@ -58,34 +59,40 @@ class Createpost extends Component {
     console.log(this.state.title, this.state.text)
   }
 
-  renderForm(){
-        <label>Title:</label> 
-        <input name="title"onChange={this.handleChange}></input>
+  handelePostCreated(){
+    let isAllNonEmpty = false;
+    isAllNonEmpty = this.allIsNotEmpty();
+    const {steps} = this.state;
+    return (
+      <div>
+        <label>Title:</label>
+        <input name="title"onChange={this.handleChange}/>
         <label>Description:</label>
         <textarea name="text" onChange={this.handleChange}></textarea>
         <p>Define your steps:</p>
         <ul>
-          { numberOfSteps.map( (step, key) => {
+          { steps.map( (step, key) => {
             console.log(step)
             return <li key={key}>
-              {step.step}
+            {step.step}
             </li>
-          })}
+              })}
         </ul>
         <Form onSubmit={this.handleSubmit}/>
         { isAllNonEmpty ? <button onClick={this.handleCreatePost}>Create Post</button> : null }
+      </div>
+    )
   }
 
   render() {
-    const { numberOfSteps } = this.state;  
-    let isAllNonEmpty = false;
-    isAllNonEmpty = this.allIsNotEmpty();
+    const { isPostCreated } = this.state;  
     return (
       <div>
-        { isPostCreated ?  renderForm(): <Redirect to="/"/>}
+        {!isPostCreated ? this.handelePostCreated() : <Redirect to={'/'}/>}
       </div>
     )
   }
 }
+  
 
 export default withAuth(Createpost);
