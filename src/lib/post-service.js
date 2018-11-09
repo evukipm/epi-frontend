@@ -12,6 +12,11 @@ class Post {
     return this.post.post('/post', {post})
       .then(({ data }) => data);
   }
+
+  getPost() {
+    return this.post('/post')
+    .then(({ data }) => data);
+  }
 }
 
 const post = new Post();

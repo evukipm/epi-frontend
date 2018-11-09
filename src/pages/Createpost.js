@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
 import { withAuth } from '../lib/authContext';
+import { Redirect } from 'react-router-dom';
 import Form from '../components/Form';
 import post from '../lib/post-service';
 
 class Createpost extends Component {
   state = {
-    numberOfSteps: [],
+    steps: [],
     isTitleEmpty: true,
     isDescriptionEmpty: true,
     title: '',
     text: '',
+    isPostCreated: false,
   }
 
   handleSubmit = (value) => {
-    const { numberOfSteps } = this.state;
-    numberOfSteps.push({step: value})
+    const { steps } = this.state;
+    steps.push({step: value})
+    console.log(value)
     this.setState({
-      numberOfSteps: numberOfSteps,
+      steps: steps,
     })
   }
 
   allIsNotEmpty(){
-    const { isTitleEmpty, isDescriptionEmpty, numberOfSteps } = this.state;
-    if (!isTitleEmpty && !isDescriptionEmpty && numberOfSteps.length > 0){
+    const { isTitleEmpty, isDescriptionEmpty, steps } = this.state;
+    if (!isTitleEmpty && !isDescriptionEmpty && steps.length > 0){
      return true;
     }
     return false;
@@ -31,8 +34,10 @@ class Createpost extends Component {
   handleCreatePost = () => {
     const { title, text, numberOfSteps } = this.state;
     post.createPost({ title, text, numberOfSteps })
-    .then( (post) => {
-
+    .then( () => {
+      this.setState({
+        isPostCreated: true,
+      })
     })
     .catch( error => {console.log(error) })
   }
@@ -54,30 +59,40 @@ class Createpost extends Component {
     console.log(this.state.title, this.state.text)
   }
 
-  render() {
-    const { numberOfSteps } = this.state;  
+  handelePostCreated(){
     let isAllNonEmpty = false;
     isAllNonEmpty = this.allIsNotEmpty();
+    const {steps} = this.state;
     return (
       <div>
         <label>Title:</label>
-        <input name="title"onChange={this.handleChange}></input>
+        <input name="title"onChange={this.handleChange}/>
         <label>Description:</label>
         <textarea name="text" onChange={this.handleChange}></textarea>
         <p>Define your steps:</p>
         <ul>
-          { numberOfSteps.map( (step, key) => {
+          { steps.map( (step, key) => {
             console.log(step)
             return <li key={key}>
-              {step.step}
+            {step.step}
             </li>
-          })}
+              })}
         </ul>
         <Form onSubmit={this.handleSubmit}/>
-        {isAllNonEmpty ? <button onClick={this.handleCreatePost}>Create Post</button> : null }
+        { isAllNonEmpty ? <button onClick={this.handleCreatePost}>Create Post</button> : null }
+      </div>
+    )
+  }
+
+  render() {
+    const { isPostCreated } = this.state;  
+    return (
+      <div>
+        {!isPostCreated ? this.handelePostCreated() : <Redirect to={'/'}/>}
       </div>
     )
   }
 }
+  
 
 export default withAuth(Createpost);
