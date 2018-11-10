@@ -16,6 +16,14 @@ class Profile {
         console.log(error);
       });
   }
+
+  getuserPost(userId) {
+    return this.profile.get(`/profile/post/${userId}`)
+      .then(( { data }) => data)
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 }
 
 const profileAjax = new Profile();
