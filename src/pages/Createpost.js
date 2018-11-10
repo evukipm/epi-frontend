@@ -17,23 +17,22 @@ class Createpost extends Component {
   handleSubmit = (value) => {
     const { steps } = this.state;
     steps.push({step: value})
-    console.log(value)
     this.setState({
-      steps: steps,
+      steps,
     })
   }
 
   allIsNotEmpty(){
     const { isTitleEmpty, isDescriptionEmpty, steps } = this.state;
     if (!isTitleEmpty && !isDescriptionEmpty && steps.length > 0){
-     return true;
+      return true;
     }
     return false;
   }
 
   handleCreatePost = () => {
-    const { title, text, numberOfSteps } = this.state;
-    post.createPost({ title, text, numberOfSteps })
+    const { title, text, steps } = this.state;
+    post.createPost({ title, text, steps })
     .then( () => {
       this.setState({
         isPostCreated: true,
@@ -44,7 +43,6 @@ class Createpost extends Component {
 
   handleChange = (event) => {  
     const {name, value} = event.target
-    console.log(name)
     if(name === 'title'){
       this.setState({
         [name]: value,
