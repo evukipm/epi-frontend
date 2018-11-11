@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
-import PrivateRoute from './components/PrivateRoute'
+import { Route, Switch } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
 import Navbar from './components/Navbar';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
@@ -20,7 +20,7 @@ class App extends Component {
             <Navbar />
             <Switch>
               <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />              
+              <Route path="/login" component={Login} />
               <PrivateRoute path="/newpost" component={Createpost} />
               <PrivateRoute path="/profile/:id" component={Profile} />
               <PrivateRoute path="/" component={Homepage} />
@@ -29,7 +29,7 @@ class App extends Component {
           </div>
         </div>
       </AuthContext>
-    )
+    );
   }
 }
 
