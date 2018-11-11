@@ -8,6 +8,7 @@ import AuthContext from './lib/authContext';
 import Createpost from './pages/Createpost';
 import Profile from './pages/profile/Profile';
 import Homepage from './pages/Homepage';
+import SearchPage from './pages/Search'
 import './stylesheets/app.css'
 
 class App extends Component {
@@ -20,9 +21,10 @@ class App extends Component {
             <Switch>
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
+              <PrivateRoute exact path="/" component={Homepage} />
               <PrivateRoute path="/newpost" component={Createpost} />
               <PrivateRoute path="/profile/:id" component={Profile} />
-              <PrivateRoute path="/" component={Homepage} />
+              <PrivateRoute path="/search" component={SearchPage} />
             </Switch>
           </div>
         </div>

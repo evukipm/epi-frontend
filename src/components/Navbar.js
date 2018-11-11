@@ -14,7 +14,7 @@ class Navbar extends Component {
             <Link to={'/'}><i className="fas fa-home"></i></Link>
           </div>
           <div>
-          <a><i className="fas fa-search"></i></a>
+          <Link to={'/search'}><i className="fas fa-search"></i></Link>
           </div>
           <div className="create-post-navbar-button">
           <Link to={'/newpost'}><i className="fas fa-pencil-alt"></i></Link>
