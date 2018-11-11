@@ -9,7 +9,8 @@ class Navbar extends Component {
     return (
       <div>
         {isLogged ? (
-<div>
+        <div>
+          <Link to={'/'}>Homepage</Link>
           <p>username: {user.username}</p>
           <p onClick={logout}>Logout</p>
           <Link to={`/profile/${user._id}`}>Go to my profile</Link>

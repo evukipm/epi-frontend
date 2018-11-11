@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import vote from '../lib/votes-service';
+import { Link } from 'react-router-dom'
 import '../stylesheets/container-component.css'
 
- class Container extends Component {
+class Container extends Component {
   
   increaseVote = (step_id, data) => {
     console.log(data);
@@ -22,7 +23,7 @@ import '../stylesheets/container-component.css'
       <div>
         <div>
           <h1>{data.title}</h1>
-          <p>Author: {data.author.username}</p>
+          <p><Link to={`/profile/${data.author._id}`}>{data.author.username}</Link></p>
           <p>{data.text}</p>
           <ol>
           {data.steps.map((step, key) => {
