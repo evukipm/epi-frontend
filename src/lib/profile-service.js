@@ -24,7 +24,16 @@ class Profile {
         console.log(error);
       });
   }
+
+  follow(userId) {
+    return this.profile.post(`/profile/post/${userId}`)
+      .then(( { data }) => data)
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 }
+
 
 const profileAjax = new Profile();
 
