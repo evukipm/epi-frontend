@@ -19,7 +19,7 @@ class Post {
   }
 
   getSearch(param) {
-    return this.post.get(`/post?q=${param}`)
+    return this.post.get('/post/search', { param })
     .then(({ data }) => data);
   }
 }
