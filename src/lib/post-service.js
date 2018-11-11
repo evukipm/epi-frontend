@@ -17,6 +17,11 @@ class Post {
     return this.post('/post')
       .then(({ data }) => data);
   }
+
+  getSearch(param) {
+    return this.post.get(`/post?q=${param}`)
+    .then(({ data }) => data);
+  }
 }
 
 const post = new Post();
