@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from '../../lib/authContext'
 import ResultUser from './ResultUser'
+import ResultPost from './ResultPost'
 import search from '../../lib/search-service'
 
 class SearchPage extends Component {
@@ -30,8 +31,6 @@ class SearchPage extends Component {
     e.preventDefault()
 
     const { searchValue, selectedOption } = this.state
-
-    if(selectedOption === 'user'){
       search.searchUser(selectedOption, searchValue)
       .then(searchResult => {
         this.setState({
@@ -39,22 +38,18 @@ class SearchPage extends Component {
         })
       })
       .catch(error => console.log(error))
-    }else if(selectedOption === 'title'){
-      console.log('title')
-    }else if(selectedOption === 'text'){
-      console.log('text')
-    }
   }
 
   setType = () => {
-    const {selectedOption, searchResult} = this.state
+    const {searchResult, selectedOption} = this.state
     if(selectedOption === 'user'){
       return <ResultUser 
       data={searchResult}
-      type={selectedOption}
     />
     }else{
-      return 'NANAI'
+      return <ResultPost 
+      data={searchResult}
+    />
     }
   }
 
