@@ -8,12 +8,14 @@ import AuthContext from './lib/authContext';
 import Createpost from './pages/Createpost';
 import Profile from './pages/profile/Profile';
 import Homepage from './pages/Homepage';
+import './stylesheets/app.css'
 
 class App extends Component {
   render() {
     return (
       <AuthContext>
-        <div className="container">
+        <div>
+          <div className="main-page">
             <Navbar />
             <Switch>
               <Route path="/signup" component={Signup} />
@@ -22,6 +24,7 @@ class App extends Component {
               <PrivateRoute path="/profile/:id" component={Profile} />
               <PrivateRoute path="/" component={Homepage} />
             </Switch>
+          </div>
         </div>
       </AuthContext>
     );

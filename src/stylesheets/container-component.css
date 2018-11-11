@@ -1,0 +1,45 @@
+.container-post-post{
+  background:blue;
+  padding:10px;
+  margin-bottom:20px;
+}
+.container-post-post h1{
+  text-align:center;
+  font-size:25px;
+  border-bottom:1px solid #000;
+  margin-bottom:0;
+}
+.container-post-author{
+  display: flex;
+  justify-content: space-between;
+  padding:10px;
+}
+.container-post-author p{
+  margin:0;
+  font-style: italic;
+}
+.container-post-description{
+  margin:0;
+  padding:10px;
+  background:#fff;
+}
+.container-post-list li{
+  display:flex;
+  justify-content: space-around;
+  background:#000;
+  align-items: center;
+}
+.container-post-list li img{
+  width:20px;
+}
+.container-post-list p{
+  display:inline-block;
+  padding:5px 15px;
+  margin-bottom:0;
+}
+.container-post-votes{
+  width:20%;
+}
+.container-post-step{
+  width:80%;
+}
