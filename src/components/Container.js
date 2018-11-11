@@ -11,21 +11,21 @@ class Container extends Component {
     viewSteps: false,
   }
   
-
-
   handleIncreaseVote = (index) => () => {
     // Esto crea una shalow copy
     const data = {...this.state.data}
     data.steps[index].votes.positive++;
+    console.log(data)
     
     this.setState({
       data: data
     })
-
-    // vote.createVote( step.id, data._id)
-    // .then((step) => {
-    // })
-    // .catch( error => {console.log(error) })
+    debugger
+    vote.createVote( data._id, data.steps[index]._id, index )
+    .then(() => {
+      console.log(data)
+    })
+    .catch( error => {console.log(error) })
   }
 
   handleDecreaseVote = (index) => () => {
