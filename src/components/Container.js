@@ -41,7 +41,7 @@ class Container extends Component {
           <p>{moment(data.date).fromNow()}</p>
           </div>
           <p className="container-post-description">{data.text}</p>
-          {data.steps.length > 1 ? <button onClick={this.toggleStep}>view steps</button> : null}
+          {data.steps.length > 1 ? <button onClick={this.toggleStep}>{viewSteps ? 'Close steps' : 'View steps'}</button> : null}
           <ol className="container-post-list">
           {viewSteps ? data.steps.map((step, key) => {
             return <li key={key}>
