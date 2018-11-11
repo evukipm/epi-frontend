@@ -69,14 +69,14 @@ class Createpost extends Component {
         <label>Description:</label>
         <textarea name="text" onChange={this.handleChange}></textarea>
         <p>Define your steps:</p>
-        <ul>
+        <ol>
           { steps.map( (step, key) => {
             console.log(step)
             return <li key={key}>
             {step.step}
             </li>
               })}
-        </ul>
+        </ol>
         <Form onSubmit={this.handleSubmit}/>
         { isAllNonEmpty ? <button onClick={this.handleCreatePost}>Create Post</button> : null }
       </div>
