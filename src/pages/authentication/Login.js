@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import auth from '../lib/auth-service';
-import { withAuth } from '../lib/authContext';
+import auth from '../../lib/auth-service';
+import { withAuth } from '../../lib/authContext';
+import '../../stylesheets/login-page.css'
+
 class Login extends Component {
   state = {
     username: "",
@@ -14,7 +16,7 @@ class Login extends Component {
     auth.login({ username, password })
     .then( (user) => {
       this.props.setUser(user)
-      this.props.history.push('/private'); 
+      this.props.history.push('/'); 
     })
     .catch( error => console.log(error) )
   }

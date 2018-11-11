@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withAuth } from '../lib/authContext';
+import '../stylesheets/form-component.css'
 
 class Form extends Component {
 

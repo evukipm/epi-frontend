@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import auth from '../lib/auth-service';
-import { withAuth } from '../lib/authContext';
+import auth from '../../lib/auth-service';
+import { withAuth } from '../../lib/authContext';
+import '../../stylesheets/signup-page.css'
 
 class Signup extends Component {
 
@@ -22,7 +23,7 @@ class Signup extends Component {
             password: "",
         });
         this.props.setUser(user);
-        this.props.history.push('/private');
+        this.props.history.push('/');
       })
       .catch( error => console.log(error) )
   }

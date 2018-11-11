@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import post from '../lib/post-service';
 import Container from '../components/Container';
+import '../stylesheets/homepage.css'
 
 export default class Homepage extends Component {
 

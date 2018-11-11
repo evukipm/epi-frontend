@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { withAuth } from '../lib/authContext';
-import profileAjax from '../lib/profile-service';
+import { withAuth } from '../../lib/authContext';
+import profileAjax from '../../lib/profile-service';
 import { Route, Link } from 'react-router-dom';
-import Mypost from '../components/Mypost';
-import Myfollowers from '../components/Myfollowers';
+import Mypost from './Mypost';
+import Myfollowers from './Myfollowers';
+import '../../stylesheets/profile-page.css'
 
 class Profile extends Component {
 

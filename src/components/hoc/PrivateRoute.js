@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Route,Redirect} from 'react-router-dom';
-import { withAuth } from '../lib/authContext';
+import { withAuth } from '../../lib/authContext';
 
 class PrivateRoute extends Component {
   render() {

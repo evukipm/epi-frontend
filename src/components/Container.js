@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import vote from '../lib/votes-service';
+import '../stylesheets/container-component.css'
 
  class Container extends Component {
   

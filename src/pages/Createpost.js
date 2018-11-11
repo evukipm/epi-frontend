@@ -3,6 +3,7 @@ import { withAuth } from '../lib/authContext';
 import { Redirect } from 'react-router-dom';
 import Form from '../components/Form';
 import post from '../lib/post-service';
+import '../stylesheets/create-post-page.css'
 
 class Createpost extends Component {
   state = {

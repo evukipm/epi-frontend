@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import profileAjax from '../lib/profile-service';
-import Container from '../components/Container';
-import {withAuth}  from '../lib/authContext';
+import profileAjax from '../../lib/profile-service';
+import Container from '../../components/Container';
+import {withAuth}  from '../../lib/authContext';
+import '../../stylesheets/myposts-page.css'
 
 class Mypost extends Component {
   state = { 
