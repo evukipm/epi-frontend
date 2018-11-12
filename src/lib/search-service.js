@@ -8,6 +8,7 @@ class Search {
     });
   }
 
+  // La ruta tiene dos querys, tipo y búsqueda
   searchUser(type, param) {
     return this.search.get(`/search?type=${type}&class=${param}`)
       .then(({ data }) => data);

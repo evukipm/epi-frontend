@@ -13,6 +13,7 @@ class SearchPage extends Component {
     searchResult: [],
   }
 
+  // Selecciona qué tipo con los radio button y lo guarda en el estado
   handleOptionChange = (e) => {
     const selectedOption = e.target.value
     this.setState({
@@ -20,6 +21,7 @@ class SearchPage extends Component {
     });
   }
 
+  // Toma el texto de la búsqueda y lo guarda en el estado
   handleInput = (e) => {
     const searchValue = e.target.value
     this.setState({
@@ -27,6 +29,7 @@ class SearchPage extends Component {
     })
   }
 
+  // Coge el tipo de los radios y la búsqueda y hace una llamada axios
   handleSubmit = (e) => {
     e.preventDefault()
 
@@ -40,6 +43,7 @@ class SearchPage extends Component {
       .catch(error => console.log(error))
   }
 
+  // Muestra un componente u otro según el tipo marcado en los radios
   setType = () => {
     const {searchResult, selectedOption} = this.state
     if(selectedOption === 'user'){
