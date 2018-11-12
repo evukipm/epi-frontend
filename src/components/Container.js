@@ -14,14 +14,14 @@ class Container extends Component {
   handleIncreaseVote = (index) => () => {
     // Esto crea una shalow copy
     const data = {...this.state.data}
-    data.steps[index].votes.positive++;
+    data.steps[index].positiveVotes++;
     console.log(data)
     
     this.setState({
       data: data
     })
-    debugger
-    vote.createVote( data._id, data.steps[index]._id, index )
+    
+    vote.createPositiveVote( data._id, data.steps[index]._id )
     .then(() => {
       console.log(data)
     })
@@ -29,12 +29,20 @@ class Container extends Component {
   }
 
   handleDecreaseVote = (index) => () => {
+    // Esto crea una shalow copy
     const data = {...this.state.data}
-    data.steps[index].votes.negative++;
+    data.steps[index].negativeVotes++;
+    console.log(data)
     
     this.setState({
       data: data
     })
+    
+    vote.createNegativeVote( data._id, data.steps[index]._id )
+    .then(() => {
+      console.log(data)
+    })
+    .catch( error => {console.log(error) })
   }
 
   toggleStep = () => {
@@ -61,9 +69,9 @@ class Container extends Component {
           {viewSteps ? data.steps.map((step, key) => {
             return <li key={key}>
               <div className="container-post-votes">
-                <p>{step.votes.positive}</p>
+                <p>{step.positiveVotes}</p>
                 <img src={`${process.env.PUBLIC_URL}/img/arrow_up.png`} alt="arrow-img" width="40px" onClick={this.handleIncreaseVote(key)}></img>
-                <p>{step.votes.negative}</p>
+                <p>{step.negativeVotes}</p>
                 <img src={`${process.env.PUBLIC_URL}/img/arrow_down.png`} alt="arrow-img" width="40px" onClick={this.handleDecreaseVote(key)}></img>
               </div>
               <div className="container-post-step">{step.step}</div>            

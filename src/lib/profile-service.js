@@ -34,6 +34,20 @@ class Profile {
   }
 }
 
+  getfollowers(userId) {
+    return this.profile.get(`/profile/getfollowers/${userId}`)
+      .then(( { data }) => data)
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  
+
+
+
+
+
 
 const profileAjax = new Profile();
 

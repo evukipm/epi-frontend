@@ -3,12 +3,12 @@ import { withAuth } from '../../lib/authContext'
 import ResultUser from './ResultUser'
 import ResultPost from './ResultPost'
 import search from '../../lib/search-service'
+import '../../stylesheets/search.css'
 
 class SearchPage extends Component {
   
   state = {
     searchValue: '',
-    data: '',
     selectedOption: 'user',
     searchResult: [],
   }
@@ -18,6 +18,7 @@ class SearchPage extends Component {
     const selectedOption = e.target.value
     this.setState({
       selectedOption,
+      searchResult: []
     });
   }
 
@@ -50,32 +51,37 @@ class SearchPage extends Component {
       return <ResultUser 
       data={searchResult}
     />
-    }else{
+    }else if (selectedOption === 'title' || selectedOption === 'text'){
       return <ResultPost 
       data={searchResult}
     />
+    }else{
+      return <div></div>
     }
   }
 
   render() {
-    const { data, searchResult, selectedOption } = this.state
+    const { searchValue, selectedOption } = this.state
     return ( 
-      <div>
+      <div className='search-page'>
         <form onSubmit={this.handleSubmit}>
-          <label>Searching for {data}</label>
-          <label>
-            <input type="radio" value="user" checked={selectedOption === 'user'} onChange={this.handleOptionChange} />
-            Users
-          </label>
-          <label>
-            <input type="radio" value="title" checked={selectedOption === 'title'} onChange={this.handleOptionChange} />
-            Posts title
-          </label>
-          <label>
-            <input type="radio" value="text" checked={selectedOption === 'text'} onChange={this.handleOptionChange} />
-            Post content
-          </label>
+          <label>Searching for {searchValue}</label>
+          <div className='search-option-container'>
+            <label className='search-radio-buttons'>
+              <input type="radio" value="user" checked={selectedOption === 'user'} onChange={this.handleOptionChange} />
+              Users
+            </label>
+            <label className='search-radio-buttons'>
+              <input type="radio" value="title" checked={selectedOption === 'title'} onChange={this.handleOptionChange} />
+              Posts title
+            </label>
+            <label className='search-radio-buttons'>
+              <input type="radio" value="text" checked={selectedOption === 'text'} onChange={this.handleOptionChange} />
+              Post content
+            </label>
+          </div>
           <input type="text" onChange={this.handleInput} />
+          <input type="submit" value="search" />
         </form>
         {this.setType()}
       </div>

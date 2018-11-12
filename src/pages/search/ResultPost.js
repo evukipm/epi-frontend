@@ -5,7 +5,12 @@ class ResultPost extends Component {
     const { data } = this.props;
     return (
       <div>
-        {data.length < 1 ? <p>Any results</p> : data.map((item, index) => <li key={index}>{item.title}</li>)}
+        {data.length < 1 ? <p>No results</p> : data.map((item, index) => (
+          <div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
       </div>
     );
   }

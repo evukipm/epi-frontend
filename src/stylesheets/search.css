@@ -1,0 +1,12 @@
+.search-page{
+
+}
+
+.search-option-container{
+  display:flex;
+  justify-content: space-around;
+}
+
+.search-radio-buttons{
+  display:block;
+}
