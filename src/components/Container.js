@@ -11,8 +11,8 @@ class Container extends Component {
     viewSteps: false,
   }
   
+  //INCREASE THE POSITIVE VOTES
   handleIncreaseVote = (index) => () => {
-    // Esto crea una shalow copy
     const data = {...this.state.data}
     data.steps[index].positiveVotes++;
     console.log(data)
@@ -21,6 +21,7 @@ class Container extends Component {
       data: data
     })
     
+    //CALLING POSITIVE VOTES SERVICE
     vote.createPositiveVote( data._id, data.steps[index]._id )
     .then(() => {
       console.log(data)
@@ -28,6 +29,7 @@ class Container extends Component {
     .catch( error => {console.log(error) })
   }
 
+  //INCREASE THE NEGATIVE VOTES
   handleDecreaseVote = (index) => () => {
     // Esto crea una shalow copy
     const data = {...this.state.data}
@@ -38,6 +40,7 @@ class Container extends Component {
       data: data
     })
     
+    //CALLING NEGATIVE VOTES SERVICE
     vote.createNegativeVote( data._id, data.steps[index]._id )
     .then(() => {
       console.log(data)

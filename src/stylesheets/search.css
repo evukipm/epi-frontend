@@ -1,3 +1,13 @@
+:root{
+  --lila-corp:#845EC2;
+  --pink-corp:#D65DB1;
+  --salmon-corp:#FF6F91;
+  --dark-orange-corp:#FF9671;
+  --orange-corp:#FFC751;
+  --yellow-corp:#F9F871;
+  --white-corp:#FCFCFC;
+}
+
 .search-page{
 
 }
@@ -9,4 +19,8 @@
 
 .search-radio-buttons{
   display:block;
+}
+
+label {
+  color: var(--white-corp);
 }

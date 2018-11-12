@@ -68,7 +68,7 @@ class Createpost extends Component {
         <input name="title"onChange={this.handleChange}/>
         <label>Description:</label>
         <textarea name="text" onChange={this.handleChange}></textarea>
-        <p>Define your steps:</p>
+        <p className="label-text">Define your steps:</p>
         <ol>
           { steps.map( (step, key) => {
             console.log(step)

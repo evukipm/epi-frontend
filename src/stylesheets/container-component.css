@@ -1,5 +1,16 @@
+:root{
+  --lila-corp:#845EC2;
+  --pink-corp:#D65DB1;
+  --salmon-corp:#FF6F91;
+  --dark-orange-corp:#FF9671;
+  --orange-corp:#FFC751;
+  --yellow-corp:#F9F871;
+  --white-corp:#FCFCFC;
+}
+
+
 .container-post-post{
-  background:blue;
+  background:var(--orange-corp);
   padding:10px;
   margin-bottom:20px;
 }
@@ -8,6 +19,7 @@
   font-size:25px;
   border-bottom:1px solid #000;
   margin-bottom:0;
+  color: var(--white-corp);
 }
 .container-post-author{
   display: flex;
@@ -42,4 +54,10 @@
 }
 .container-post-step{
   width:80%;
+}
+
+
+/*--*/
+label {
+  color: var(--white-corp);
 }
