@@ -7,19 +7,34 @@ import moment from 'moment'
 class Container extends Component {
 
   state = {
+    data: this.props.data,
     viewSteps: false,
   }
   
-  increaseVote = (step_id, data) => {
-    console.log(data);
-    vote.createVote( step_id, data._id)
-    .then( (step) => {
+  handleIncreaseVote = (index) => () => {
+    // Esto crea una shalow copy
+    const data = {...this.state.data}
+    data.steps[index].votes.positive++;
+    console.log(data)
+    
+    this.setState({
+      data: data
+    })
+    debugger
+    vote.createVote( data._id, data.steps[index]._id, index )
+    .then(() => {
+      console.log(data)
     })
     .catch( error => {console.log(error) })
   }
 
-  decreaseVote = () => {
-    console.log('-1');
+  handleDecreaseVote = (index) => () => {
+    const data = {...this.state.data}
+    data.steps[index].votes.negative++;
+    
+    this.setState({
+      data: data
+    })
   }
 
   toggleStep = () => {
@@ -30,8 +45,8 @@ class Container extends Component {
   }
 
   render() {
-    const { data } = this.props
-    const { viewSteps } = this.state
+    const { data, viewSteps } = this.state
+
     return (
       <div>
         <div className="container-post-post">
@@ -47,9 +62,9 @@ class Container extends Component {
             return <li key={key}>
               <div className="container-post-votes">
                 <p>{step.votes.positive}</p>
-                <img src={`${process.env.PUBLIC_URL}/img/arrow_up.png`} alt="arrow-img" width="40px" onClick={() => this.increaseVote(step._id, data)} ></img>
+                <img src={`${process.env.PUBLIC_URL}/img/arrow_up.png`} alt="arrow-img" width="40px" onClick={this.handleIncreaseVote(key)}></img>
                 <p>{step.votes.negative}</p>
-                <img src={`${process.env.PUBLIC_URL}/img/arrow_down.png`} alt="arrow-img" width="40px" onClick={this.decreaseVote}></img>
+                <img src={`${process.env.PUBLIC_URL}/img/arrow_down.png`} alt="arrow-img" width="40px" onClick={this.handleDecreaseVote(key)}></img>
               </div>
               <div className="container-post-step">{step.step}</div>            
             </li>

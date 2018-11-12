@@ -8,10 +8,9 @@ class Vote {
     });
   }
 
-  createVote(body, postData) {
-    console.log(postData);
-    return this.vote.put(`/vote/${postData}`, body)
-    // return this.vote(`/vote/${postData}`, idStep)
+  createVote(id, stepId, index) {
+    debugger;
+    return this.vote.put(`/vote/${id}`, { stepId, index })
       .then(({ data }) => data);
   }
 }
