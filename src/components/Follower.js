@@ -11,7 +11,7 @@ class Follower extends Component {
     return (
       <div>
         <p>{ data.username }</p>
-        <p>{ avatar }</p>
+        <p>{ data.avatar }</p>
       </div>
     )
   }

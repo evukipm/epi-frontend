@@ -32,7 +32,7 @@ class Profile {
         console.log(error);
       });
   }
-}
+
 
   getfollowers(userId) {
     return this.profile.get(`/profile/getfollowers/${userId}`)
@@ -43,7 +43,7 @@ class Profile {
   }
 
   
-
+}
 
 
 
