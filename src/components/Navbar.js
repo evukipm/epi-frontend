@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../lib/authContext';
-import '../stylesheets/navbar-component.css'
+import '../stylesheets/navbar-component.css';
 
 class Navbar extends Component {
   render() {
@@ -9,30 +9,30 @@ class Navbar extends Component {
     return (
       <div>
         {isLogged ? (
-        <div className="navbar-container">
+          <div className="navbar-container">
           <div>
-            <Link to={'/'}><i className="fas fa-home"></i></Link>
+            <Link to="/"><i className="fas fa-home" /></Link>
           </div>
           <div>
-          <Link to={'/search'}><i className="fas fa-search"></i></Link>
+            <Link to="/search"><i className="fas fa-search" /></Link>
           </div>
           <div className="create-post-navbar-button">
-          <Link to={'/newpost'}><i className="fas fa-pencil-alt"></i></Link>
+            <Link to="/newpost"><i className="fas fa-pencil-alt" /></Link>
           </div>
           <div>
-          <Link to={`/profile/${user._id}`}><i className="fas fa-user"></i></Link>
+            <Link to={`/profile/${user._id}`}><i className="fas fa-user" /></Link>
           </div>
           <div>
-          <a onClick={logout}><i className="fas fa-sign-out-alt"></i></a>
+            <p onClick={logout}><i className="fas fa-sign-out-alt" /></p>
           </div>
         </div>
         ) : (
-        <div className="navbar-container">
-          <Link to='/login'>Login</Link>
-          <Link to='/signup'>Signup</Link>
-          
+          <div className="navbar-container">
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Signup</Link>
+
         </div>
-)
+        )
       }
       </div>
     );
