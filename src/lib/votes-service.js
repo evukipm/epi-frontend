@@ -8,9 +8,13 @@ class Vote {
     });
   }
 
-  createVote(id, stepId, index) {
-    debugger;
-    return this.vote.put(`/vote/${id}`, { stepId, index })
+  createPositiveVote(id, stepId) {
+    return this.vote.put(`/vote/${id}/increase`, { stepId })
+      .then(({ data }) => data);
+  }
+
+  createNegativeVote(id, stepId) {
+    return this.vote.put(`/vote/${id}/decrease`, { stepId })
       .then(({ data }) => data);
   }
 }
