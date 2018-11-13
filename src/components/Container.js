@@ -94,7 +94,7 @@ class Container extends Component {
     const negative = data.steps.reduce((acum, item) => {
       return acum + item.negativeVotes
     }, 0)
-    console.log((positive / (positive + negative)) * 100);
+    // console.log((positive / (positive + negative)) * 100);
     return (
       <div>
         <div className="container-post-post">
