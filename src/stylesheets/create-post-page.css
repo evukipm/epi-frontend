@@ -8,6 +8,46 @@
   --white-corp:#FCFCFC;
 }
 
-label {
-  color: var(--white-corp);
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--orange-corp);
 }
+
+.container {
+  margin: 0;
+  padding: 0;
+}
+
+.create-post-elements {
+  height: 70px;
+}
+
+.create-post-elements input {
+  margin: 0 auto;
+  width: 90%;
+  height: 35px;
+  border-radius: 5px;
+  display: flex;
+  margin-top:150px;
+}
+
+.create-post-elements-textarea {
+  height: 300px; 
+}
+
+.create-post-elements-textarea textarea {
+  margin: 0 auto;
+  width: 90%;
+  height: 200px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.create-post-elements form {
+  margin: 0 auto;
+  margin-top: 50px;
+ 
+}
+
+

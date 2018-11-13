@@ -81,7 +81,7 @@ class Container extends Component {
           <p className="container-post-description">{data.text}</p>
           <div>
             <div>
-              <p>Positive votes: { !rate ? 0: rate } %</p> 
+              <p>Positive votes: { !(rate) ? 0: rate } %</p> 
             </div>
             <div>
               {data.steps.length > 1 ? 
