@@ -9,7 +9,6 @@ class Container extends Component {
   state = {
     data: this.props.data,
     viewSteps: false,
-    postives: [],
   }
   
   //INCREASE THE POSITIVE VOTES
@@ -56,45 +55,21 @@ class Container extends Component {
     })
   }
 
-  handleRatioOfPositiveVotes(key){
-    const {data, postives} = this.state;
-    return data.steps[key].positiveVotes;
-  }
-
-  sumAllNumbers(arrayOfNums){
-    arrayOfNums.reduce(function(previusValue, curentVlue){
-      // console.log(previusValue, curentVlue)
-      return previusValue + curentVlue;
-    }, 0);
-
-  }
-
-
-  //
-  /*{data.steps.map( (step, key) =>{
-    numberOfVotes.push(this.handleRatioOfPositiveVotes(key))
-    return numberOfVotes.reduce(function(previusValue, curentVlue){
-      console.log(previusValue, curentVlue)
-      return previusValue + curentVlue;
-    }, 0);
-  })}
-  */
-
-  /*
-  (numerosPositivos / (numerosPositivos + numerosNegativos) * 100
-  */
-
   render() {
-    const { data, viewSteps } = this.state
-    const numberOfVotes = [];
+    const { data, viewSteps } = this.state;
+    //number of positive votes
     const positive = data.steps.reduce((acum, item) => {
-      console.log('E', item.positiveVotes)
       return acum + item.positiveVotes
     }, 0)
+    //number of negative votes
     const negative = data.steps.reduce((acum, item) => {
       return acum + item.negativeVotes
     }, 0)
-    // console.log((positive / (positive + negative)) * 100);
+    //get total of votes
+    const total = positive + negative;
+    //get positive ratio
+    const rate = ((positive/total)*100).toFixed(0);
+
     return (
       <div>
         <div className="container-post-post">
@@ -106,15 +81,7 @@ class Container extends Component {
           <p className="container-post-description">{data.text}</p>
           <div>
             <div>
-              <p>Positive votes: 
-              {data.steps.map( (step, key) =>{
-                numberOfVotes.push(this.handleRatioOfPositiveVotes(key))
-                return numberOfVotes
-              })}
-              {this.sumAllNumbers(numberOfVotes)}
-
-
-              </p> 
+              <p>Positive votes: { !rate ? 0: rate } %</p> 
             </div>
             <div>
               {data.steps.length > 1 ? 
