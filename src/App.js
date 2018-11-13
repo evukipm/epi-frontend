@@ -8,8 +8,8 @@ import AuthContext from './lib/authContext';
 import Createpost from './pages/Createpost';
 import Profile from './pages/profile/Profile';
 import Homepage from './pages/Homepage';
-import SearchPage from './pages/search/Search'
-import './stylesheets/app.css'
+import SearchPage from './pages/search/Search';
+import './stylesheets/app.css';
 
 class App extends Component {
   render() {

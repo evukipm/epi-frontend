@@ -1,24 +1,3 @@
-:root{
-  --lila-corp:#845EC2;
-  --pink-corp:#D65DB1;
-  --salmon-corp:#FF6F91;
-  --dark-orange-corp:#FF9671;
-  --orange-corp:#FFC751;
-  --yellow-corp:#F9F871;
-  --white-corp:#FCFCFC;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--orange-corp);
-}
-
-.container {
-  margin: 0;
-  padding: 0;
-}
-
 .create-post-elements {
   height: 70px;
 }

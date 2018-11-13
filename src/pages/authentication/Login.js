@@ -29,18 +29,18 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <div class="container">
-        <h1 class="title-app">Stepsay</h1>
+      <div className="login-container">
+        <h1 className="title-app">Stepsay</h1>
         <form onSubmit={this.handleFormSubmit}>
         <div>
-          <div class="signup-login-elements">
+          <div className="signup-login-elements">
             <input type="text" name="username" value={username} onChange={this.handleChange} placeholder="User name"/>
           </div>
-          <div class="signup-login-elements">
+          <div className="signup-login-elements">
             <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password"/>
           </div>
         </div >
-        <div class="signup-login-elements">
+        <div className="signup-login-elements">
           <input type="submit" value="Login" />
         </div>
         </form>

@@ -8,6 +8,11 @@
   --white-corp:#FCFCFC;
 }
 
+label {
+  color: var(--white-corp);
+}
 
-
-
+.container {
+  margin: 0;
+  padding: 0;
+}
