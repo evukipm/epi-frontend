@@ -17,7 +17,6 @@ class App extends Component {
       <AuthContext>
         <div>
           <div className="main-page">
-            <Navbar />
             <Switch>
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
@@ -26,6 +25,7 @@ class App extends Component {
               <PrivateRoute path="/profile/:id" component={Profile} />
               <PrivateRoute path="/search" component={SearchPage} />
             </Switch>
+            <Navbar />
           </div>
         </div>
       </AuthContext>
