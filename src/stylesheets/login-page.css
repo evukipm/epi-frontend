@@ -19,15 +19,20 @@ body {
   padding: 0;
 }
 
-.login-elements {
+.signup-login-elements {
   height: 70px;
 }
 
-.login-elements input {
+.signup-login-elements input {
   margin: 0 auto;
   width: 90%;
   height: 35px;
   border-radius: 5px;
   display: flex;
+}
+
+.title-app {
+  margin-top: 200px;
+  margin-bottom: 100px;
 }
 

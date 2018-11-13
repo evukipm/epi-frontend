@@ -30,17 +30,17 @@ class Login extends Component {
     const { username, password } = this.state;
     return (
       <div class="container">
-        <h1>Stepsay</h1>
+        <h1 class="title-app">Stepsay</h1>
         <form onSubmit={this.handleFormSubmit}>
         <div>
-          <div class="login-elements">
+          <div class="signup-login-elements">
             <input type="text" name="username" value={username} onChange={this.handleChange} placeholder="User name"/>
           </div>
-          <div class="login-elements">
+          <div class="signup-login-elements">
             <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password"/>
           </div>
         </div >
-        <div class="login-elements">
+        <div class="signup-login-elements">
           <input type="submit" value="Login" />
         </div>
         </form>

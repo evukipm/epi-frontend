@@ -9,13 +9,14 @@ class Container extends Component {
   state = {
     data: this.props.data,
     viewSteps: false,
+    postives: [],
   }
   
   //INCREASE THE POSITIVE VOTES
   handleIncreaseVote = (index) => () => {
     const data = {...this.state.data}
     data.steps[index].positiveVotes++;
-    console.log(data)
+    // console.log(data)
     
     this.setState({
       data: data
@@ -24,7 +25,7 @@ class Container extends Component {
     //CALLING POSITIVE VOTES SERVICE
     vote.createPositiveVote( data._id, data.steps[index]._id )
     .then(() => {
-      console.log(data)
+      // console.log(data)
     })
     .catch( error => {console.log(error) })
   }
@@ -34,7 +35,7 @@ class Container extends Component {
     // Esto crea una shalow copy
     const data = {...this.state.data}
     data.steps[index].negativeVotes++;
-    console.log(data)
+    // console.log(data)
     
     this.setState({
       data: data
@@ -43,7 +44,7 @@ class Container extends Component {
     //CALLING NEGATIVE VOTES SERVICE
     vote.createNegativeVote( data._id, data.steps[index]._id )
     .then(() => {
-      console.log(data)
+      // console.log(data)
     })
     .catch( error => {console.log(error) })
   }
@@ -55,9 +56,45 @@ class Container extends Component {
     })
   }
 
+  handleRatioOfPositiveVotes(key){
+    const {data, postives} = this.state;
+    return data.steps[key].positiveVotes;
+  }
+
+  sumAllNumbers(arrayOfNums){
+    arrayOfNums.reduce(function(previusValue, curentVlue){
+      // console.log(previusValue, curentVlue)
+      return previusValue + curentVlue;
+    }, 0);
+
+  }
+
+
+  //
+  /*{data.steps.map( (step, key) =>{
+    numberOfVotes.push(this.handleRatioOfPositiveVotes(key))
+    return numberOfVotes.reduce(function(previusValue, curentVlue){
+      console.log(previusValue, curentVlue)
+      return previusValue + curentVlue;
+    }, 0);
+  })}
+  */
+
+  /*
+  (numerosPositivos / (numerosPositivos + numerosNegativos) * 100
+  */
+
   render() {
     const { data, viewSteps } = this.state
-
+    const numberOfVotes = [];
+    const positive = data.steps.reduce((acum, item) => {
+      console.log('E', item.positiveVotes)
+      return acum + item.positiveVotes
+    }, 0)
+    const negative = data.steps.reduce((acum, item) => {
+      return acum + item.negativeVotes
+    }, 0)
+    console.log((positive / (positive + negative)) * 100);
     return (
       <div>
         <div className="container-post-post">
@@ -67,7 +104,23 @@ class Container extends Component {
           <p>{moment(data.date).fromNow()}</p>
           </div>
           <p className="container-post-description">{data.text}</p>
-          {data.steps.length > 1 ? <button onClick={this.toggleStep}>{viewSteps ? 'Close steps' : 'View steps'}</button> : null}
+          <div>
+            <div>
+              <p>Positive votes: 
+              {data.steps.map( (step, key) =>{
+                numberOfVotes.push(this.handleRatioOfPositiveVotes(key))
+                return numberOfVotes
+              })}
+              {this.sumAllNumbers(numberOfVotes)}
+
+
+              </p> 
+            </div>
+            <div>
+              {data.steps.length > 1 ? 
+              <button onClick={this.toggleStep}>{viewSteps ? 'Close steps' : 'View steps'}</button> : null}
+            </div>
+          </div>
           <ol className="container-post-list">
           {viewSteps ? data.steps.map((step, key) => {
             return <li key={key}>
@@ -77,7 +130,7 @@ class Container extends Component {
                 <p>{step.negativeVotes}</p>
                 <img src={`${process.env.PUBLIC_URL}/img/arrow_down.png`} alt="arrow-img" width="40px" onClick={this.handleDecreaseVote(key)}></img>
               </div>
-              <div className="container-post-step">{step.step}</div>            
+              <div className="container-post-step">{step.step}</div>         
             </li>
           }) : null}
           </ol>

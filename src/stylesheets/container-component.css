@@ -51,13 +51,11 @@
 }
 .container-post-votes{
   width:20%;
+  color:var(--white-corp);
 }
 .container-post-step{
   width:80%;
+  color:var(--white-corp);
 }
 
 
-/*--*/
-label {
-  color: var(--white-corp);
-}

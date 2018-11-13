@@ -7,3 +7,31 @@
   --yellow-corp:#F9F871;
   --white-corp:#FCFCFC;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--orange-corp);
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+}
+
+.signup-login-elements {
+  height: 70px;
+}
+
+.signup-login-elements input {
+  margin: 0 auto;
+  width: 90%;
+  height: 35px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.title-app {
+  margin-top: 200px;
+  margin-bottom: 100px;
+}
