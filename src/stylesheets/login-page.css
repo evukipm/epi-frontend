@@ -1,5 +1,27 @@
+.login-page{
+  background-color:var(--orange-corp);
+  min-height:100vh;
+  display:flex;
+  justify-content: center;
+}
+
 .login-container{
-  background-color:var(--orange-corp)
+  position:absolute;
+  top:160px;
+  width:90%;
+  text-align:center;
+  margin-left:0;
+  margin-right:0;
+}
+
+.login-container .title-app{
+  font-family: 'Sugar', Courier, monospace;
+  font-size:80px;
+  color:var(--white-corp);
+}
+
+.login-container .title-app span{
+  color:var(--lila-corp);
 }
 
 .signup-login-elements {
@@ -9,12 +31,6 @@
 .signup-login-elements input {
   margin: 0 auto;
   width: 90%;
-  height: 35px;
   border-radius: 5px;
-  display: flex;
-}
-
-.title-app {
-
 }
 
