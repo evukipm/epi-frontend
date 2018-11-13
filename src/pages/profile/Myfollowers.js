@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../../stylesheets/myfollowers-page.css';
 import { withAuth } from '../../lib/authContext';
 import Follower from '../../components/Follower';
-//import profile from '../lib/profile-service';
 
 class Myfollowers extends Component {
   render() {

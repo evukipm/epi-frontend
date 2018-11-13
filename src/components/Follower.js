@@ -11,10 +11,7 @@ class Follower extends Component {
     return (
       <div>
         <p>{ data.username }</p>
-<<<<<<< HEAD
-=======
         <p>{ data.avatar }</p>
->>>>>>> 7e9755760355d2c37992eb979f9e3bf048c172d0
       </div>
     )
   }
