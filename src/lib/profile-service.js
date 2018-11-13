@@ -19,28 +19,29 @@ class Profile {
 
   getuserPost(userId) {
     return this.profile.get(`/profile/post/${userId}`)
-      .then(( { data }) => data)
+      .then(({ data }) => data)
       .catch((error) => {
         console.log(error);
       });
   }
 
   follow(userId) {
-    return this.profile.post(`/profile/post/${userId}`)
-      .then(( { data }) => data)
+    return this.profile.post(`/profile/follow/${userId}`)
+      .then(({ data }) => data)
       .catch((error) => {
         console.log(error);
       });
   }
 
 
-  //getfollowers(userId) {
-    //return this.profile.get(`/profile/getfollowers/${userId}`)
-     // .then(({ data }) => data)
-      //.catch((error) => {
-        //console.log(error);
-      //});
-  //}
+  getfollowers(userId) {
+    return this.profile.get(`/profile/getfollowers/${userId}`)
+      .then(({ data }) => data)
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+}
 
 
 const profileAjax = new Profile();

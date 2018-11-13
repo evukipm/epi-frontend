@@ -82,7 +82,7 @@ class Profile extends Component {
             <Link to={`/profile/${id}/myfollowers`}>link2</Link>
           </nav>
           <Route path={`/profile/${id}/mypost`} render={props => {return <Mypost {...props} id={id} />}}/>
-          <Route path={`/profile/${id}/myfollowers`} render={props => {return <Myfollowers {...props} id={id} />}}/>
+          <Route path={`/profile/${id}/myfollowers`} render={props => {return <Myfollowers {...props} user={this.state.user} />}}/>
         </div>
       </div>
     )
