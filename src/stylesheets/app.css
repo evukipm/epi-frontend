@@ -8,18 +8,6 @@
   --white-corp:#FCFCFC;
 }
 
-.main-page{
-  padding-top:100px;
-}
-body{
-  background-color: var(--salmon-corp);
-}
 
-label {
-  color: var(--white-corp);
-}
 
-input {
-  border-radius: 30px;
-  height: 30px;
-}
+
