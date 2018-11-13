@@ -35,7 +35,7 @@ class Profile {
 
 
   getfollowers(userId) {
-    return this.profile.get(`/profile/getfollowers/${userId}`)
+    return this.profile.get(`/profile/followers/${userId}`)
       .then(({ data }) => data)
       .catch((error) => {
         console.log(error);

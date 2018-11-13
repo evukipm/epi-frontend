@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../../stylesheets/myfollowers-page.css';
-import { withAuth } from '../../lib/authContext';
 import Follower from '../../components/Follower';
+import { withAuth } from '../../lib/authContext';
 
-class Myfollowers extends Component {
+class Following extends Component {
   render() {
     const { following } = this.props.user;
     return (
@@ -20,4 +20,4 @@ class Myfollowers extends Component {
   }
 }
 
-export default withAuth(Myfollowers);
+export default withAuth(Following);
