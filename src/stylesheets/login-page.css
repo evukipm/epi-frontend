@@ -8,10 +8,26 @@
   --white-corp:#FCFCFC;
 }
 
-.label-text{
-  color: var(white);
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--orange-corp);
 }
 
-label {
-  color: var(--white-corp);
+.container {
+  margin: 0;
+  padding: 0;
 }
+
+.login-elements {
+  height: 70px;
+}
+
+.login-elements input {
+  margin: 0 auto;
+  width: 90%;
+  height: 35px;
+  border-radius: 5px;
+  display: flex;
+}
+
