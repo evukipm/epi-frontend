@@ -3,7 +3,8 @@ import { withAuth } from '../../lib/authContext';
 import profileAjax from '../../lib/profile-service';
 import { Route, Link } from 'react-router-dom';
 import Mypost from './Mypost';
-import Myfollowers from './Myfollowers';
+import Following from './Following';
+import Followers from './Followers'
 import '../../stylesheets/profile-page.css'
 
 class Profile extends Component {
@@ -78,11 +79,13 @@ class Profile extends Component {
         </div>
         <div>
           <nav>
-            <Link to={`/profile/${id}/mypost`}>link1</Link>
-            <Link to={`/profile/${id}/myfollowers`}>link2</Link>
+            <Link to={`/profile/${id}/mypost`}>Stepsays</Link>
+            <Link to={`/profile/${id}/following`}>Following</Link>
+            <Link to={`/profile/${id}/followers`}>Followers</Link>
           </nav>
           <Route path={`/profile/${id}/mypost`} render={props => {return <Mypost {...props} id={id} />}}/>
-          <Route path={`/profile/${id}/myfollowers`} render={props => {return <Myfollowers {...props} id={id} />}}/>
+          <Route path={`/profile/${id}/following`} render={props => {return <Following {...props} user={this.state.user} />}}/>
+          <Route path={`/profile/${id}/followers`} render={props => {return <Followers {...props} id={id} />}}/>
         </div>
       </div>
     )
