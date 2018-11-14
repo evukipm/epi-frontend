@@ -4,33 +4,34 @@ import { withAuth } from '../lib/authContext';
 import '../stylesheets/navbar-component.css';
 
 class Navbar extends Component {
+
+  state = {
+    inLogin: false,
+    inSignup:false,
+  }
+
+  comparePaths = () => {
+    const { path } = this.props
+    console.log(path)
+  }
+
   render() {
     const { isLogged, user, logout } = this.props;
     return (
       <div>
+        {this.comparePaths}
         {isLogged ? (
           <div className="navbar-container">
-          <div>
             <Link to="/"><i className="fas fa-home" /></Link>
-          </div>
-          <div>
             <Link to="/search"><i className="fas fa-search" /></Link>
-          </div>
-          <div className="create-post-navbar-button">
-            <Link to="/newpost"><i className="fas fa-pencil-alt" /></Link>
-          </div>
-          <div>
+            <Link to="/newpost" className="create-post" ><i className="fas fa-pencil-alt" /></Link>
             <Link to={`/profile/${user._id}`}><i className="fas fa-user" /></Link>
+            <a onClick={logout}><i className="fas fa-sign-out-alt" /></a>
           </div>
-          <div>
-            <p onClick={logout}><i className="fas fa-sign-out-alt" /></p>
-          </div>
-        </div>
         ) : (
-          <div className="navbar-container">
+          <div className="navbar-login-container">
           <Link to="/login">Login</Link>
           <Link to="/signup">Signup</Link>
-
         </div>
         )
       }

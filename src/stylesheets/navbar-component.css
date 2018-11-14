@@ -1,21 +1,23 @@
-.navbar-container{
+.navbar-container, .navbar-login-container{
   display:flex;
   justify-content: space-around;
   background:var(--orange-corp);
-  height:40px;
   padding:10px 0px;
   position:fixed;
-  top:0;
   width:100%;
   left:0;
+  top:0;
 }
-.create-post-navbar-button i{
-  text-align:center;
-  display:block;
-  font-size:38px;
-  background:#000;
+.navbar-container a{
+  text-decoration:none;
+  font-size:30px;
+}
+.navbar-container .create-post{
+  background:var(--lila-corp);
+  color:var(--white-corp);
+  padding:20px;
   border-radius:50%;
-  padding:10px;
-  width:65px;
-  height:65px;
+  position:fixed;
+  bottom:20px;
+  right:10px;
 }
