@@ -9,3 +9,7 @@
   border-radius: 5px;
   display: flex;
 }
+
+.signup-error-message {
+  margin-top: 630px;
+}

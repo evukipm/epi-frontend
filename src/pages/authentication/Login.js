@@ -5,8 +5,9 @@ import '../../stylesheets/login-page.css'
 
 class Login extends Component {
   state = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
+    message: '',
   }
 
   handleFormSubmit = (event) => {
@@ -18,7 +19,31 @@ class Login extends Component {
       this.props.setUser(user)
       this.props.history.push('/'); 
     })
-    .catch( error => console.log(error) )
+    .catch( error => {
+      const { data } = error.response;
+      console.log(data)
+      switch(data.error){
+        case 'User or password invalid':
+          this.setState({
+            message: 'Username or password not valid'
+          });
+          break;
+        case 'not-found':
+          this.setState({
+            message: 'Username or password not valid'
+          });
+          break;
+        case 'validation':
+          this.setState({
+            message: 'Username or password can\'t be empty'
+          });
+          break;
+        default:
+          this.setState({
+            message: ''
+          });
+      }
+    })
   }
 
   handleChange = (event) => {  
@@ -27,7 +52,7 @@ class Login extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, message } = this.state;
     return (
       <div className="login-page">
         <div className="login-container">
@@ -38,6 +63,7 @@ class Login extends Component {
             <input className="button" type="submit" value="Login" />
           </form>
         </div>
+        { message ? <p className="login-error-message">{ message }</p> :  null}
       </div>
     )
   }

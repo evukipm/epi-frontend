@@ -6,9 +6,10 @@ import '../../stylesheets/signup-page.css'
 class Signup extends Component {
 
   state = {
-    username: "",
-    password: "",
-    email: "",
+    username: '',
+    password: '',
+    email: '',
+    message: '',
   };
 
   handleFormSubmit = (event) => {
@@ -25,7 +26,26 @@ class Signup extends Component {
         this.props.setUser(user);
         this.props.history.push('/');
       })
-      .catch( error => console.log(error) )
+      .catch( error => {
+        const { data } = error.response;
+      console.log(data)
+      switch(data.error){
+        case 'empty':
+          this.setState({
+            message: 'Username or password can\'t be emptu'
+          });
+          break;
+        case 'username-not-unique':
+          this.setState({
+            message: 'Username must be unique'
+          });
+          break;
+        default:
+          this.setState({
+            message: ''
+          });
+      }
+      })
   }
 
   handleChange = (event) => {  
@@ -34,7 +54,7 @@ class Signup extends Component {
   }
 
   render() {
-    const { username, password, email } = this.state;
+    const { username, password, email, message } = this.state;
     return (
 
       <div className="signup-page">
@@ -47,6 +67,7 @@ class Signup extends Component {
             <input className="button" type="submit" value="Signup" />
           </form>
         </div>
+        { message ? <p className="signup-error-message">{ message }</p> :  null}
       </div>
     )
   }

@@ -29,3 +29,11 @@
   justify-content:center;
   align-items: center;
 }
+
+.error-message{
+  color: black;
+}
+
+.login-error-message {
+  margin-top: 560px;
+}
