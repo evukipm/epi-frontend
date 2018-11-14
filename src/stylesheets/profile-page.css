@@ -4,8 +4,31 @@
   min-height: 100vh;
 }
 
-.profile-img {
-  width: 70%;
-  border-radius: 150%;
-  border: 4px solid whitesmoke;
+.user-profile {
+  padding: 50px;
+  text-align: center;
+  font-size: 50px;
 }
+
+.profile-img {
+  padding: 150px;
+  text-align: center;
+}
+
+.decoration-none {
+  text-decoration: none;
+}
+
+.navbar-profile{
+  display:flex;
+  justify-content: space-around;
+  background:var(--orange-corp);
+  height:40px;
+  padding:10px 0px;
+  position:fixed;
+  bottom:0;
+  width:100%;
+  left:0;
+}
+
+
