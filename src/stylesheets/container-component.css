@@ -1,7 +1,9 @@
 .container-post-post{
-  margin:10px 5px;
+  margin:35px 20px;
   background:var(--white-2);
-  border:1px solid var(--orange-corp)
+  border:1px solid rgb(236, 236, 236);
+  border-radius:4px;
+  box-shadow:0px 2px 15px rgb(80, 80, 80);
 }
 .container-post-post .container-author{
   display:flex;
@@ -23,12 +25,13 @@
 }
 .container-post-post h1{
   text-align:center;
-  font-size:25px;
+  font-size:20px;
   margin:0;
+  font-family:Helvetica, Arial, sans-serif;
   text-transform:uppercase;
+  background: rgb(236, 236, 236);
   padding:10px;
-  background:var(--orange-corp);
-  color: var(--white-2);
+  color: var(--lila-corp);
 }
 .container-post-description{
   margin:0;
@@ -51,7 +54,7 @@
 }
 .steps-button{
   display:block;
-  margin:0 auto;
+  text-align:center;
 }
 .container-post-votes{
   width:20%;

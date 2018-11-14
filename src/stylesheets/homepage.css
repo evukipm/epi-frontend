@@ -1,3 +1,5 @@
-.main-page{
-  margin-top:60px;
+.main-post-list{
+  display:flex;
+  flex-flow:column-reverse;
+  margin-top:100px;
 }

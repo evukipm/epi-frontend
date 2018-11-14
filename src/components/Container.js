@@ -9,32 +9,29 @@ class Container extends Component {
   state = {
     data: this.props.data,
     viewSteps: false,
+    classOpen: '',
   }
   
   //INCREASE THE POSITIVE VOTES
   handleIncreaseVote = (index) => () => {
     const data = {...this.state.data}
     data.steps[index].positiveVotes++;
-    // console.log(data)
     
     this.setState({
-      data: data
+      data: data,
+      classOpen: ''
     })
     
     //CALLING POSITIVE VOTES SERVICE
     vote.createPositiveVote( data._id, data.steps[index]._id )
-    .then(() => {
-      // console.log(data)
-    })
+    .then(() => {})
     .catch( error => {console.log(error) })
   }
 
   //INCREASE THE NEGATIVE VOTES
   handleDecreaseVote = (index) => () => {
-    // Esto crea una shalow copy
     const data = {...this.state.data}
     data.steps[index].negativeVotes++;
-    // console.log(data)
     
     this.setState({
       data: data
@@ -43,45 +40,49 @@ class Container extends Component {
     //CALLING NEGATIVE VOTES SERVICE
     vote.createNegativeVote( data._id, data.steps[index]._id )
     .then(() => {
-      // console.log(data)
     })
     .catch( error => {console.log(error) })
   }
 
   toggleStep = () => {
-    const { viewSteps } = this.state
-    this.setState({
-      viewSteps: !viewSteps
-    })
+    const { viewSteps, classOpen } = this.state
+    if(classOpen === 'steps-open'){
+      this.setState({
+        viewSteps: false,
+        classOpen: ''
+      })
+    }else if(classOpen === ''){
+      this.setState({
+        viewSteps: true,
+        classOpen: 'steps-open'
+      })
+    }
+    
   }
 
   render() {
-    const { data, viewSteps } = this.state;
-    //number of positive votes
+    const { data, viewSteps, classOpen } = this.state;
     const positive = data.steps.reduce((acum, item) => {
       return acum + item.positiveVotes
     }, 0)
-    //number of negative votes
     const negative = data.steps.reduce((acum, item) => {
       return acum + item.negativeVotes
     }, 0)
-    //get total of votes
     const total = positive + negative;
-    //get positive ratio
     const rate = ((positive/total)*100).toFixed(0);
 
     return (
         <div className="container-post-post">
         <h1>{data.title}</h1>
-         <div className="container-author">
+          <div className="container-author">
             <img src={data.author.avatar} alt={data.author.username} />
             <Link to={`/profile/${data.author._id}`}>{data.author.username}</Link>
-         </div>
+          </div>
           <div className="container-post-description">
               <p>{data.text}</p>
               {data.steps.length > 0 ? 
-              <button onClick={this.toggleStep}>{viewSteps ? 'Close steps' : 'View steps'}</button> : null}
-              <ol className="container-post-list">
+              <p className="steps-button" onClick={this.toggleStep}>{viewSteps ? 'Close steps' : 'View steps'}</p> : null}
+              <ol className={`container-post-list ${classOpen}`}>
           {viewSteps ? data.steps.map((step, key) => {
             return <li key={key}>
               <div className="container-post-votes">

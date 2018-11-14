@@ -33,7 +33,7 @@ export default class Homepage extends Component {
   render() {
     const {data} = this.state;
     return (
-      <div>
+      <div className="main-post-list">
         {data.map( (post, index) => {
           return <Container 
             data = {post}
