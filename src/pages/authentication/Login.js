@@ -32,15 +32,9 @@ class Login extends Component {
       <div className="login-page">
         <div className="login-container">
           <h1 className="title-app">Step<span>S</span>ay</h1>
-          <form onSubmit={this.handleFormSubmit}>
-          <div>
-            <div className="signup-login-elements">
-              <input type="text" name="username" value={username} onChange={this.handleChange} placeholder="User name"/>
-            </div>
-            <div className="signup-login-elements">
-              <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password"/>
-            </div>
-          </div >
+          <form className="login-form" onSubmit={this.handleFormSubmit}>
+            <input className="input" type="text" name="username" value={username} onChange={this.handleChange} placeholder="User name"/>
+            <input className="input" type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password"/>
             <input className="button" type="submit" value="Login" />
           </form>
         </div>

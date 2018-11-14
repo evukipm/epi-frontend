@@ -9,18 +9,19 @@ class Signup extends Component {
   state = {
     username: "",
     password: "",
+    email: "",
   };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
+    const { username, password, email } = this.state;
 
-    auth.signup({ username, password })
+    auth.signup({ username, password, email })
       .then( (user) => {
         this.setState({
             username: "",
             password: "",
+            email: "",
         });
         this.props.setUser(user);
         this.props.history.push('/');
@@ -34,27 +35,19 @@ class Signup extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, email } = this.state;
     return (
-      <div class="container">
-        <h1 class="title-app">Stepsay</h1>
-        <form onSubmit={this.handleFormSubmit}>
-        <div>
-          <div class="signup-login-elements">
-            <input type="text" name="username" value={username} onChange={this.handleChange} placeholder="User name"/>
-          </div>
-          <div class="signup-login-elements">
-            <input type="password" name="password" value={password} onChange={this.handleChange} 
-              placeholder="Password"/>
-          </div>
+
+      <div className="signup-page">
+        <div className="signup-container">
+          <h1 className="title-app">Step<span>S</span>ay</h1>
+          <form className="signup-form" onSubmit={this.handleFormSubmit}>
+            <input className="input" type="text" name="username" value={username} onChange={this.handleChange} placeholder="User name"/>
+            <input className="input" type="email" name="email" value={email} onChange={this.handleChange} placeholder="Email" />
+            <input className="input" type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password"/>
+            <input className="button" type="submit" value="Signup" />
+          </form>
         </div>
-        <div class="signup-login-elements">
-          <input type="submit" value="Signup" />
-        </div>
-        </form>
-        <p>Already have account? 
-          <Link to={"/login"}> Login</Link>
-        </p>
       </div>
     )
   }

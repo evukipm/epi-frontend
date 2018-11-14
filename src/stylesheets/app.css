@@ -23,6 +23,17 @@ label {
   text-align:center;
   border:none;
   outline:none;
-  border-radius:4px;
-  background:var(--lila-corp)
+  border-radius:5px;
+  background:var(--lila-corp);
+  width:70%;
+  font-size:20px;
+  color:var(--white-corp);
+  margin-top:10px;
+}
+
+.input{
+  margin:10px auto;
+  padding:15px;
+  width:80%;
+  border-radius: 5px;
 }
