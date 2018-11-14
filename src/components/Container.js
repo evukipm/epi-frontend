@@ -8,8 +8,6 @@ class Container extends Component {
 
   state = {
     data: this.props.data,
-    viewSteps: false,
-    classOpen: '',
   }
   
   //INCREASE THE POSITIVE VOTES
@@ -19,7 +17,6 @@ class Container extends Component {
     
     this.setState({
       data: data,
-      classOpen: ''
     })
     
     //CALLING POSITIVE VOTES SERVICE
@@ -44,24 +41,8 @@ class Container extends Component {
     .catch( error => {console.log(error) })
   }
 
-  toggleStep = () => {
-    const { viewSteps, classOpen } = this.state
-    if(classOpen === 'steps-open'){
-      this.setState({
-        viewSteps: false,
-        classOpen: ''
-      })
-    }else if(classOpen === ''){
-      this.setState({
-        viewSteps: true,
-        classOpen: 'steps-open'
-      })
-    }
-    
-  }
-
   render() {
-    const { data, viewSteps, classOpen } = this.state;
+    const { data } = this.state;
     const positive = data.steps.reduce((acum, item) => {
       return acum + item.positiveVotes
     }, 0)
@@ -79,22 +60,26 @@ class Container extends Component {
             <Link to={`/profile/${data.author._id}`}>{data.author.username}</Link>
           </div>
           <div className="container-post-description">
-              <p>{data.text}</p>
-              {data.steps.length > 0 ? 
-              <p className="steps-button" onClick={this.toggleStep}>{viewSteps ? 'Close steps' : 'View steps'}</p> : null}
-              <ol className={`container-post-list ${classOpen}`}>
-          {viewSteps ? data.steps.map((step, key) => {
-            return <li key={key}>
-              <div className="container-post-votes">
-                <p>{step.positiveVotes}</p>
-                <img src={`${process.env.PUBLIC_URL}/img/arrow_up.png`} alt="arrow-img" width="40px" onClick={this.handleIncreaseVote(key)}></img>
-                <p>{step.negativeVotes}</p>
-                <img src={`${process.env.PUBLIC_URL}/img/arrow_down.png`} alt="arrow-img" width="40px" onClick={this.handleDecreaseVote(key)}></img>
-              </div>
-              <div className="container-post-step">{step.step}</div>         
-            </li>
-          }) : null}
-          </ol>
+          <details>
+            <summary>{data.text}</summary>
+            <p>
+                {data.steps.map((step, key) => {
+                return <div key={key} className="container-post-votes">
+                    <div className="container-votes">
+                      <div>
+                        <p>{step.positiveVotes}</p>
+                        <i class="fas fa-angle-double-up" onClick={this.handleIncreaseVote(key)}></i>
+                      </div>
+                      <div>
+                        <p>{step.negativeVotes}</p>
+                        <i class="fas fa-angle-double-down" onClick={this.handleDecreaseVote(key)}></i>
+                      </div>
+                    </div>
+                    <div className="container-post-step">{step.step}</div>
+                  </div>
+              })}
+          </p>
+          </details>
           </div>
           <div className="container-footer">
             {rate ? <p>Positive votes: { !(rate) ? 0: rate } %</p> : null}
