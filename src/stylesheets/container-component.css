@@ -38,31 +38,22 @@
   padding:10px;
   background:#fff;
 }
-.container-post-list li{
-  display:flex;
-  justify-content: space-around;
-  background:#000;
-  align-items: center;
-}
-.container-post-list li img{
-  width:20px;
-}
-.container-post-list p{
-  display:inline-block;
-  padding:5px 15px;
-  margin-bottom:0;
-}
-.steps-button{
-  display:block;
-  text-align:center;
-}
 .container-post-votes{
-  width:20%;
-  color:var(--white-corp);
+  display:flex;
+  justify-content:flex-start;
+  margin-top:20px;
+}
+.container-post-votes img{
+  width:15px;
+}
+.container-post-votes p{
+  margin:0;
+  padding:0;
+  display:inline;
 }
 .container-post-step{
-  width:80%;
-  color:var(--white-corp);
+  padding:10px;
+  background: var(--white-corp);
 }
 .container-footer{
   display:flex;
@@ -75,5 +66,91 @@
   color:var(--lila-corp);
   font-style: italic;
 }
+details {
+  min-height: 5px;
+  max-width: 700px;
+  padding:20px;
+  margin: 0 auto;
+  position: relative;
+  font-size: 22px;
+  box-sizing: border-box;
+  transition: all .3s;
+}
 
+details + details {
+  margin-top: 20px;
+}
 
+details[open] {
+  min-height: 50px;
+  box-shadow: 2px 2px 20px rgba(0,0,0,.2);
+}
+
+details p {
+  color: #96999d;
+  font-weight: 300;
+}
+summary {
+  font-weight: 500;
+  cursor: pointer;
+}
+summary:focus {
+  outline: none;
+}
+summary::-webkit-details-marker {
+  display: none
+}
+summary::after {
+  padding:10px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  color: var(--lila-corp);
+  font-family: "Font Awesome 5 Free";
+  font-size: 15px;
+  font-style: normal;
+  font-variant-caps: normal;
+  font-variant-ligatures: normal;
+  font-weight: 900;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  content: "\f078";
+  transform: translateY(-50%);
+  transition: .3s ease;
+}
+
+details[open] summary::after {
+  content: "\f057";
+  font-size: 30px;
+  top: 0;
+  transform: translateY(0);
+  transition: .3s ease;
+}
+
+details[open] summary:hover::after {
+  animation: pulse 1s ease;
+}
+
+@keyframes pulse {
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.fa-angle-double-down{
+  color:red;
+  padding:0 10px;
+}
+.fa-angle-double-up{
+  color:green;
+  padding:0 10px;
+}
