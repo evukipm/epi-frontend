@@ -32,7 +32,7 @@ class Signup extends Component {
       switch(data.error){
         case 'empty':
           this.setState({
-            message: 'Username or password can\'t be emptu'
+            message: 'Username or password can\'t be empty'
           });
           break;
         case 'username-not-unique':
