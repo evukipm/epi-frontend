@@ -1,16 +1,20 @@
 .navbar-container, .navbar-login-container{
   display:flex;
   justify-content: space-around;
-  background:var(--orange-corp);
+  background:var(--lila-corp);
   padding:10px 0px;
   position:fixed;
   width:100%;
   left:0;
   top:0;
 }
+.navbar-login-container a{
+  color:var(--white-corp);
+}
 .navbar-container a{
   text-decoration:none;
-  font-size:30px;
+  font-size:26px;
+  color:var(--white-corp)
 }
 .navbar-container .create-post{
   background:var(--lila-corp);

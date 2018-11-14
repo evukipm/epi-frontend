@@ -12,6 +12,27 @@ body{
   src: url('../fonts/SUGAR.TTF');
 }
 
+.button{
+  display:block;
+  padding:20px;
+  text-align:center;
+  border:none;
+  outline:none;
+  border-radius:5px;
+  background:var(--lila-corp);
+  width:70%;
+  font-size:20px;
+  color:var(--white-corp);
+  margin-top:10px;
+}
+
+.input{
+  margin:10px auto;
+  padding:15px;
+  width:80%;
+  border-radius: 5px;
+}
+
 input:focus{
   border:2px solid var(--lila-corp);
   outline:none;
