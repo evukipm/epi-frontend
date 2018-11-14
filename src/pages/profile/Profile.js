@@ -69,19 +69,19 @@ class Profile extends Component {
           <div className='profile-img'>
             <img src={avatar} alt={username} />
           </div>
-          <div className='follow'>
-            <Link to={`/profile/${_id}`}>{username}</Link> 
+          <div className='user-profile'>
+            <Link className='decoration-none'to={`/profile/${_id}`}>{username}</Link> 
             { this.state.isSameUser ? null : <button onClick={this.addFollower.bind(this)}>Follow me</button>} 
           </div>
-          <div>
+          <div className='profile-description'>
             {description}
           </div>
         </div>
         <div>
-          <nav>
-            <Link to={`/profile/${id}/mypost`}>Stepsays</Link>
-            <Link to={`/profile/${id}/following`}>Following</Link>
-            <Link to={`/profile/${id}/followers`}>Followers</Link>
+          <nav className='navbar-profile'>
+            <Link className='decoration-none'to={`/profile/${id}/mypost`}>Stepsays</Link>
+            <Link className='decoration-none'to={`/profile/${id}/following`}>Following</Link>
+            <Link className='decoration-none'to={`/profile/${id}/followers`}>Followers</Link>
           </nav>
           <Route path={`/profile/${id}/mypost`} render={props => {return <Mypost {...props} id={id} />}}/>
           <Route path={`/profile/${id}/following`} render={props => {return <Following {...props} user={this.state.user} />}}/>
