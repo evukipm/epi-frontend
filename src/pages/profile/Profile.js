@@ -65,11 +65,11 @@ class Profile extends Component {
     const {_id, username, avatar, description} = this.state.user
     return (
       <div className='profile-main-page'>
-        <div>
-          <div>
+        <div> >
+          <div className='profile-img'>
             <img src={avatar} alt={username} />
           </div>
-          <div>
+          <div className='follow'>
             <Link to={`/profile/${_id}`}>{username}</Link> 
             { this.state.isSameUser ? null : <button onClick={this.addFollower.bind(this)}>Follow me</button>} 
           </div>
