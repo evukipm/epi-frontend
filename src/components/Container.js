@@ -71,24 +71,17 @@ class Container extends Component {
     const rate = ((positive/total)*100).toFixed(0);
 
     return (
-      <div>
         <div className="container-post-post">
-          <h1>{data.title}</h1>
-          <div className="container-post-author">
-          <p><Link to={`/profile/${data.author._id}`}>{data.author.username}</Link></p>
-          <p>{moment(data.date).fromNow()}</p>
-          </div>
-          <p className="container-post-description">{data.text}</p>
-          <div>
-            <div>
-              <p>Positive votes: { !(rate) ? 0: rate } %</p> 
-            </div>
-            <div>
-              {data.steps.length > 1 ? 
+        <h1>{data.title}</h1>
+         <div className="container-author">
+            <img src={data.author.avatar} alt={data.author.username} />
+            <Link to={`/profile/${data.author._id}`}>{data.author.username}</Link>
+         </div>
+          <div className="container-post-description">
+              <p>{data.text}</p>
+              {data.steps.length > 0 ? 
               <button onClick={this.toggleStep}>{viewSteps ? 'Close steps' : 'View steps'}</button> : null}
-            </div>
-          </div>
-          <ol className="container-post-list">
+              <ol className="container-post-list">
           {viewSteps ? data.steps.map((step, key) => {
             return <li key={key}>
               <div className="container-post-votes">
@@ -101,8 +94,12 @@ class Container extends Component {
             </li>
           }) : null}
           </ol>
+          </div>
+          <div className="container-footer">
+            {rate ? <p>Positive votes: { !(rate) ? 0: rate } %</p> : null}
+            <p>{moment(data.date).fromNow()}</p>
+          </div>
         </div>
-      </div>
     )
   }
 }

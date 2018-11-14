@@ -26,7 +26,7 @@ class Navbar extends Component {
             <Link to="/search"><i className="fas fa-search" /></Link>
             <Link to="/newpost" className="create-post" ><i className="fas fa-pencil-alt" /></Link>
             <Link to={`/profile/${user._id}`}><i className="fas fa-user" /></Link>
-            <a onClick={logout}><i className="fas fa-sign-out-alt" /></a>
+            <a href="" onClick={logout}><i className="fas fa-sign-out-alt" /></a>
           </div>
         ) : (
           <div className="navbar-login-container">
