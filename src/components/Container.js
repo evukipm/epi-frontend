@@ -68,11 +68,11 @@ class Container extends Component {
                     <div className="container-votes">
                       <div>
                         <p>{step.positiveVotes}</p>
-                        <i class="fas fa-angle-double-up" onClick={this.handleIncreaseVote(key)}></i>
+                        <i className="fas fa-angle-double-up" onClick={this.handleIncreaseVote(key)}></i>
                       </div>
                       <div>
                         <p>{step.negativeVotes}</p>
-                        <i class="fas fa-angle-double-down" onClick={this.handleDecreaseVote(key)}></i>
+                        <i className="fas fa-angle-double-down" onClick={this.handleDecreaseVote(key)}></i>
                       </div>
                     </div>
                     <div className="container-post-step">{step.step}</div>

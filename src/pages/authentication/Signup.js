@@ -28,7 +28,6 @@ class Signup extends Component {
       })
       .catch( error => {
         const { data } = error.response;
-      console.log(data)
       switch(data.error){
         case 'empty':
           this.setState({

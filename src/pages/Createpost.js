@@ -55,7 +55,6 @@ class Createpost extends Component {
         isDescriptionEmpty: false,
       });
     }
-    console.log(this.state.title, this.state.text)
   }
 
   handelePostCreated(){
@@ -76,7 +75,6 @@ class Createpost extends Component {
             <p className="label-text text">Define your steps:</p>
             <ol>
               { steps.map( (step, key) => {
-                console.log(step)
                 return <li key={key}>
                 {step.step}
                 </li>

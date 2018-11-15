@@ -21,7 +21,6 @@ class Login extends Component {
     })
     .catch( error => {
       const { data } = error.response;
-      console.log(data)
       switch(data.error){
         case 'User or password invalid':
           this.setState({
