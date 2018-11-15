@@ -37,7 +37,7 @@ class Signup extends Component {
           break;
         case 'username-not-unique':
           this.setState({
-            message: 'Username must be unique'
+            message: 'That username is taken. Please, try another'
           });
           break;
         default:
@@ -62,12 +62,12 @@ class Signup extends Component {
           <h1 className="title-app">Step<span>S</span>ay</h1>
           <form className="signup-form" onSubmit={this.handleFormSubmit}>
             <input className="input" type="text" name="username" value={username} onChange={this.handleChange} placeholder="User name"/>
-            <input className="input" type="email" name="email" value={email} onChange={this.handleChange} placeholder="Email" />
+            <input className="input" type="email" name="email" value={email} onChange={this.handleChange} placeholder="Email" required/>
             <input className="input" type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password"/>
             <input className="button" type="submit" value="Signup" />
           </form>
         </div>
-        { message ? <p className="signup-error-message">{ message }</p> :  null}
+        { message ? <p className="signup-error-message text">{ message }</p> :  null}
       </div>
     )
   }

@@ -5,9 +5,9 @@
   --white-2:rgb(252, 252, 252);
 }
 
-label {
+/* label {
   color: var(--white-corp);
-}
+} */
 
 .container {
   margin: 0;

@@ -60,10 +60,10 @@ class Login extends Component {
           <form className="login-form" onSubmit={this.handleFormSubmit}>
             <input className="input" type="text" name="username" value={username} onChange={this.handleChange} placeholder="User name"/>
             <input className="input" type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password"/>
-            <input className="button" type="submit" value="Login" />
+            <input className="button create-post-button" type="submit" value="Login" />
           </form>
         </div>
-        { message ? <p className="login-error-message">{ message }</p> :  null}
+        { message ? <p className="login-error-message text">{ message }</p> :  null}
       </div>
     )
   }

@@ -1,3 +1,17 @@
+.text {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.search-page {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 70px;
+}
+
+.radiobutton-container{
+  display: flex;
+}
+
 .search-option-container{
   display:flex;
   justify-content: space-around;
@@ -7,6 +21,14 @@
   display:block;
 }
 
-label {
-  color: var(--white-corp);
+.input-for-create-post{
+  margin:10px auto;
+  padding:15px;
+  width:90%;
+  border-radius: 5px;
+}
+
+input:focus{
+  border:2px solid var(--lila-corp);
+  outline:none;
 }

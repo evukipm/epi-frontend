@@ -63,16 +63,17 @@ class Createpost extends Component {
     isAllNonEmpty = this.allIsNotEmpty();
     const {steps} = this.state;
     return (
-      <div className="container">
+      <div className="create-post-container">
+        <h1 className="create-post-title text">New post</h1>
         <div>
-          <div className="create-post-elements">
-            <input name="title"onChange={this.handleChange} placeholder="Title"/>
+          <div>
+            <input className="input-for-create-post" name="title"onChange={this.handleChange} placeholder="Title"/>
           </div>
-          <div className="create-post-elements-textarea">
+          <div>
             <textarea name="text" onChange={this.handleChange}placeholder="Description"></textarea>
           </div>
-          <div className="create-post-elements">
-            <p className="label-text">Define your steps:</p>
+          <div>
+            <p className="label-text text">Define your steps:</p>
             <ol>
               { steps.map( (step, key) => {
                 console.log(step)
@@ -82,7 +83,7 @@ class Createpost extends Component {
                   })}
             </ol>
             <Form onSubmit={this.handleSubmit}/>
-            { isAllNonEmpty ? <button onClick={this.handleCreatePost}>Create Post</button> : null }
+            { isAllNonEmpty ? <button className="button create-post-button" onClick={this.handleCreatePost}>Create Post</button> : null }
           </div>
         </div>
       </div>

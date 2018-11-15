@@ -65,23 +65,29 @@ class SearchPage extends Component {
     return ( 
       <div className='search-page'>
         <form onSubmit={this.handleSubmit}>
-          <label>Searching for {searchValue}</label>
+          <h3 className="text">Searching for {searchValue}</h3>
           <div className='search-option-container'>
-            <label className='search-radio-buttons'>
-              <input type="radio" value="user" checked={selectedOption === 'user'} onChange={this.handleOptionChange} />
-              Users
-            </label>
-            <label className='search-radio-buttons'>
-              <input type="radio" value="title" checked={selectedOption === 'title'} onChange={this.handleOptionChange} />
-              Posts title
-            </label>
-            <label className='search-radio-buttons'>
-              <input type="radio" value="text" checked={selectedOption === 'text'} onChange={this.handleOptionChange} />
-              Post content
-            </label>
+            <div className="radiobutton-container">
+              <label className='search-radio-buttons text'>
+                <input className="input-for-create-post" type="radio" value="user" checked={selectedOption === 'user'} onChange={this.handleOptionChange} />
+                Users
+              </label>
+            </div>
+            <div className="radiobutton-container">
+              <label className='search-radio-buttons text'>
+                <input className="input-for-create-post" type="radio" value="title" checked={selectedOption === 'title'} onChange={this.handleOptionChange} />
+                Posts title
+              </label>
+            </div>
+            <div className="radiobutton-container">
+              <label className='search-radio-buttons text'>
+                <input className="input-for-create-post" type="radio" value="text" checked={selectedOption === 'text'} onChange={this.handleOptionChange} />
+                Post content
+              </label>
+            </div> 
           </div>
-          <input type="text" onChange={this.handleInput} />
-          <input type="submit" value="search" />
+          <input className="input-for-create-post" type="text" onChange={this.handleInput} required/>
+          <input className="button create-post-button" type="submit" value="search" />
         </form>
         {this.setType()}
       </div>
